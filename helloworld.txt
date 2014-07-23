@@ -1,4 +1,5 @@
 hello world hello github
+<<<<<<< HEAD
 jsust for
 sdkfji 
 
@@ -9,3 +10,6 @@ Teams and log in
 Icon
 You cannot use the team id, email address, or team name to log into Bitbucket. 
 Each member of the team must have their own individual Bitbucket account. 
+=======
+great
+>>>>>>> origin/master
