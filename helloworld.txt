@@ -1,4 +1,4 @@
-hello world hello github
+hello world hello github     I  also add content on first line
 <<<<<<< HEAD
 jsust for
 sdkfji 
