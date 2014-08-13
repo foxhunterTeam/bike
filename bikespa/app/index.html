@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" ng-app="bikespaApp" >
   <head>
     <meta charset="utf-8">
     <title></title>
@@ -15,27 +15,65 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="bikespaApp">
+  <body  ng-controller="BodyController" >
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
+
+
     <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a ng-href="#">Home</a></li>
-          <li><a ng-href="#/about">About</a></li>
-          <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">bikespa</h3>
-      </div>
-
-      <div ng-view=""></div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+        <div class="navbar navbar-default" role="navigation">
+            <div class="navbar-collapse">
+                <!-- Navbar links -->
+                <ul class="nav navbar-nav">
+                    <li ng-class="{ active: $state.is('app.home') }">
+                        <a ui-sref="app.home">Home test</a>
+                    </li>
+                    <li ng-class="{ active: $state.is('app.admin') }">
+                        <a ui-sref="app.admin">Admin-Only page</a>
+                    </li>
+                    <li ng-class="{ active: $state.is('app.user') }">
+                        <a ui-sref="app.user">Registered-Only page</a>
+                    </li>
+                    <li ng-class="{ active: $state.is('app.register') }">
+                        <a ui-sref="app.register">Register <i class="fa fa-user"></i>+</a>
+                    </li>
+                </ul>
+                <!-- Right side of the navbar -->
+                <!-- Login Form -->
+                <form class="navbar-form navbar-right" name="loginForm" role="login" ng-submit="loginMe()" ng-hide="ls.isLogged || !ls.doneLoading">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="login.username" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" ng-model="login.password" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-default hidden-devices" ng-disabled="login.working">Login <i class="fa" ng-class="login.working ? 'fa-cog fa-spin' : 'fa-sign-in'"></i></button>
+                </form>
+                <!-- Spinner -->
+                <button class="btn btn-default navbar-btn navbar-right" ng-hide="ls.doneLoading">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </button>
+                <!-- Logout Form -->
+                <form class="navbar-form navbar-right" role="logout" ng-submit="logoutMe()" ng-show="ls.isLogged">
+                    <div class="form-group">
+                        <label>Hello {{ ls.user.name }}</label>
+                    </div>
+                    <div class="form-group">
+                        <button  type="submit" class="btn btn-default">Logout <i class="fa fa-signout"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="login-error" ng-class="{ 'active': login.wrong }">
+                <div class="alert alert-danger"><b>Error:</b> Server (WUT?) said your user/pass doesn't match existing users.</div>
+            </div>
+        </div>
+        <ui-view ng-hide="doingResolve"></ui-view>
+        <div class="jumbotron loading-jumbo" ng-show="doingResolve">
+            <h1><i class="fa fa-refresh fa-2x fa-spin"></i> Loading</h1>
+        </div>
     </div>
 
 
@@ -69,13 +107,29 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <script src="bower_components/templates-app/templates-app.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/routing-config.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/services/bikeservice.js"></script>
+        <script src="scripts/directives/bikedirective.js"></script>
+        <script src="scripts/services/loginservice.js"></script>
+        <script src="scripts/services/mockhttp.js"></script>
+        <script src="scripts/directives/form-helpers.js"></script>
+        <script src="scripts/controllers/register.js"></script>
+        <script src="scripts/controllers/home.js"></script>
+        <script src="scripts/controllers/error.js"></script>
+        <script src="scripts/controllers/pages.js"></script>
+        <script src="scripts/controllers/grandfather.js"></script>
         <!-- endbuild -->
 </body>
 </html>
