@@ -216,5 +216,6 @@ pip-log.txt
 
 #WebStrom project files
 .idea/
+.tmp/
 #test project
 guthub/
