@@ -12,41 +12,21 @@ angular.module('bikespaApp.about',['bikespaApp.grandfather'])
         $stateProvider
             .state('app.about', {
                 url: '/about',
-                templateUrl: '/views/about.html',
-                //template: '<h1>My Contacts</h1>',
-                controller: 'AboutCtrl',
+                views:{
+                    'menucontainer@':{
+                        templateUrl: 'views/about.html',
+                        controller: 'AboutCtrl'
+                    },
+                    'menucontainer2@':{
+                        template:"template  af  template "
+                    }
+                },
+
                 accessLevel: accessLevels.anon
             });
     })
   .controller('AboutCtrl', function ($scope, $http, $timeout, $state) {
-        $scope.xhr = false;
-        $scope.redirect = false;
 
-        $scope.registerObj = {
-            role: 'user'
-        };
-
-        $scope.submit = function (formInstance) {
-            // xhr is departing
-            $scope.xhr = true;
-            $http.post('/user', $scope.registerObj)
-                .success(function (data, status, headers, config) {
-                    console.info('post success - ', data);
-                    $scope.xhr = false;
-                    $scope.redirect = true;
-                    $timeout(function () {
-                        $state.go('app.home');
-                    }, 2000);
-                })
-                .error(function (data, status, headers, config) {
-                    data.errors.forEach(function (error, index, array) {
-                        formInstance[error.field].$error[error.name] = true;
-                    });
-                    formInstance.$setPristine();
-                    console.info('post error - ', data);
-                    $scope.xhr = false;
-                });
-        };
     });
 
 

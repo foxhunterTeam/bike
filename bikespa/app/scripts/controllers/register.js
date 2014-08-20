@@ -12,8 +12,16 @@ angular.module('bikespaApp.register', ['bikespaApp.grandfather'])
         $stateProvider
             .state('app.register', {
                 url: '/register',
-                templateUrl: 'views/register.html',
+
+               /* templateUrl: 'views/register.html',
                 controller: 'RegisterController',
+*/
+                views:{
+                    'menucontainer@':{
+                        templateUrl: 'views/register.html',
+                        controller: 'RegisterController'
+                    }
+                },
                 accessLevel: accessLevels.anon
             });
     })

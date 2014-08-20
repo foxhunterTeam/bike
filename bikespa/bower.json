@@ -15,8 +15,7 @@
     "angular-local-storage": "~0.0.5",
     "angular-mocks": "~1.2.22",
     "angular-ui-router": "~0.2.10",
-    "templates-app":"~1.0"
-
+    "ngDialog": "~0.2.11"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

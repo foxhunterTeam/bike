@@ -7,7 +7,7 @@
  * # GrandfatherCtrl
  * Controller of the bikespaApp
  */
-angular.module('bikespaApp.grandfather', ['ui.router', 'templates-app'])
+angular.module('bikespaApp.grandfather', ['ui.router'])
     .config(function ($stateProvider) {
         $stateProvider
             .state('app', {

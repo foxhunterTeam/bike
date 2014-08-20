@@ -177,4 +177,9 @@ angular.module('bikespaApp.mock', ['ngMockE2E'])
             }
         });
 
+      /* $httpBackend.whenGET('views/about.html').passThrough();
+       $httpBackend.whenGET('views/home.html').passThrough();*/
+
+        $httpBackend.whenGET(/^views/).passThrough();
+
     });

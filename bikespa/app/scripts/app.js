@@ -16,7 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-
+    'ngDialog',
 
     // login service
 
@@ -26,6 +26,10 @@ angular
     // different app sections
     'bikespaApp.grandfather',
     'bikespaApp.about',
+    'bikespaApp.contact',
+    'bikespaApp.gallery',
+    'bikespaApp.homepage',
+    'bikespaApp.service',
     'bikespaApp.home',
     'bikespaApp.pages',
     'bikespaApp.register',
@@ -51,7 +55,7 @@ angular
         $rootScope.$on('$stateChangeError', resolveDone);
         $rootScope.$on('$statePermissionError', resolveDone);
     })
-  .controller('BodyController', function ($scope, $state, $stateParams, loginService, $http, $timeout) {
+  .controller('BodyController', function ($scope, $state, $stateParams, loginService, $http, $timeout,ngDialog ) {
         // Expose $state and $stateParams to the <body> tag
         $scope.$state = $state;
         $scope.$stateParams = $stateParams;
@@ -80,6 +84,16 @@ angular
         $scope.logoutMe = function () {
             loginService.logoutUser($http.get('/logout'));
         };
+
+        $scope.clickToRegister = function () {
+            ngDialog.open({ template: 'views/register.html' });
+        };
+
+        $scope.clickToSignIn = function () {
+            ngDialog.open({ template: 'views/signin.html' });
+        };
+
+
     });
 
 ;
