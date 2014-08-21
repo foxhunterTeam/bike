@@ -38,13 +38,14 @@
 
     <!-- Add your site or application content here -->
 
+    <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+        <div class="containerLogin" >
+            <div class=" navbar-default" role="navigation">
 
-    <div class="containerLogin" >
-        <div class="navbar navbar-default" role="navigation">
-            <headroom tolerance='0' offset='0' classes="{pinned:'headroom--pinned',unpinned:'headroom--unpinned',initial:'headroom'}">
                 <div class="navbar-collapse">
                     <!-- Navbar links -->
-                    <ul class="nav navbar-nav">
+
+                   <!-- <ul class="nav navbar-nav">
                         <li ng-class="{ active: $state.is('app.home') }">
                             <a ui-sref="app.home">Home test</a>
                         </li>
@@ -54,7 +55,12 @@
                         <li ng-class="{ active: $state.is('app.user') }">
                             <a ui-sref="app.user">Registered-Only page</a>
                         </li>
-                    </ul>
+                    </ul>-->
+
+                    <form class="navbar-form navbar-middle">
+                        <input type="text" class="form-control col-lg-8 fa fa-user " placeholder="Search">
+                    </form>
+
                     <!-- Right side of the navbar -->
                     <!-- Login Form -->
                     <form class="navbar-form navbar-right" name="loginForm" role="login" ng-submit="loginMe()" ng-hide="ls.isLogged || !ls.doneLoading">
@@ -76,25 +82,26 @@
                         </div>
                     </form>
                 </div>
-            </headroom>
-            <div class="login-error" ng-class="{ 'active': login.wrong }">
-                <div class="alert alert-danger"><b>Error:</b> Server (WUT?) said your user/pass doesn't match existing users.</div>
+
+                <div class="login-error" ng-class="{ 'active': login.wrong }">
+                    <div class="alert alert-danger"><b>Error:</b> Server (WUT?) said your user/pass doesn't match existing users.</div>
+                </div>
             </div>
+
+            <!--  <ui-view ng-hide="doingResolve"></ui-view>-->
+
         </div>
+    </nav>
 
-      <!--  <ui-view ng-hide="doingResolve"></ui-view>-->
-
-    </div>
 
 
     <!--  posh bike bootstrap template index  start-->
 
 
-    <!--
-     <div class="bg-image"></div>
-     <div class="overlay-bg"></div>
 
-    -->
+     <div class="bg-image"></div>
+
+
     <!--
     <div class="container language-select visible-md visible-lg">
         <div class="row">
@@ -178,10 +185,10 @@
 
 
 
-    <div class="site-footer">
+    <div class="site-footer " ng-hide="doingResolve">
         <div class="row">
             <div class="col-md-6">
-                <p class="copyright-text">Copyright &copy; 2084 Company Name <!-- Credit: www.templatemo.com --></p>
+                <p class="copyright-text">Copyright &copy; 2014 珀车 <!--  www.poshbike.com --></p>
             </div>
             <div class="col-md-6">
                 <div class="social-icons-footer">
@@ -206,6 +213,44 @@
 
     <!--  bootstrap template end -->
 
+
+
+    <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+    <div id="blueimp-gallery" class="blueimp-gallery">
+        <!-- The container for the modal slides -->
+        <div class="slides"></div>
+        <!-- Controls for the borderless lightbox -->
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+        <!-- The modal dialog, which will be used to wrap the lightbox content -->
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body next"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left prev">
+                            <i class="glyphicon glyphicon-chevron-left"></i>
+                            Previous
+                        </button>
+                        <button type="button" class="btn btn-primary next">
+                            Next
+                            <i class="glyphicon glyphicon-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body   end -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -272,14 +317,6 @@
     <script src="scripts/js/jquery.lightbox.js"></script>
     <script src="scripts/js/templatemo_custom.js"></script>
 
-  <!--  <script src="scripts/js/pin/jquery.pin.min.js"></script>
-
-    <script src="scripts/js/headroom/Headroom.js"></script>
-    <script src="scripts/js/headroom/angular.headroom.js"></script>-->
-
-
-
-
     <script>
       <!-- temperaly comments these google map functions  -->
 
@@ -304,26 +341,22 @@
 
         -->*/
 
-      /*$(".pinned").pin ({containerSelector: ".main-content"}) ;*/
 
-
-
-
-//              jQuery(function($) {
-//                  $(document).ready( function() {
-//                      $('.main_menu').stickUp({
-//
-//                          itemClass: 'menuItem',
-//                          itemHover: 'active',
-//                          stickyHeight: '100px'
-//                      });
-//                  });
-//              });
 
 
     </script>
 
      <!-- bootstrap tempate javascript end  -->
+
+     <!--  bootstrap gallery javascript start -->
+
+    <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="styles/css/bootstrap-image-gallery/bootstrap-image-gallery.min.css">
+
+    <script src="http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+    <script src="scripts/js/bootstrap-image-gallery/bootstrap-image-gallery.min.js"></script>
+
+    <!--  bootstrap gallery javascript end -->
 
 
 </body>

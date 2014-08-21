@@ -11,8 +11,12 @@ angular.module('bikespaApp.grandfather', ['ui.router'])
     .config(function ($stateProvider) {
         $stateProvider
             .state('app', {
-                abstract: true,
-                template: '<ui-view></ui-view>',
+                url: '/',
+                views:{
+                    'menucontainer':{
+                        templateUrl: 'views/homepage.html'
+                    }
+                },
                 resolve: {
                     'login': function (loginService, $q, $http) {
                         var roleDefined = $q.defer();

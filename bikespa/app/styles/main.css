@@ -197,3 +197,7 @@ body {
 .jumbotron h1 {
     text-shadow: 1px 1px 1px grey;
 }
+
+.ngdialog-content {
+    background: #2e3338;
+}
