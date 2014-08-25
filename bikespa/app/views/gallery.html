@@ -20,15 +20,15 @@
             </div> <!-- /.col-md-6 -->
         </div> <!-- /.row -->
         <div class="row">
-            <div id="Grid">
+            <div id="Grid" >
                 <!-- bike information thumbnail start -->
 
-                <div class="col-md-4 col-sm-6  graphic">
+                <div class="col-md-4 col-sm-6  graphic" ng-repeat="bike in bikes" >
 
                     <div class="thumbnail">
-                        <img src="images/gallery/p1.jpg" alt="china thumbnail">
+                        <img src="{{bike.href}}" alt="china thumbnail">
                         <div class="caption">
-                            <h3>The Great Wall of China</h3>
+                            <h3>{{bike.title}}</h3>
                             <p>The Great Wall of China is a series of fortifications
                                 made of stone, brick, tamped earth, wood, and other
                                 materials, generally built along an east-to-west line
